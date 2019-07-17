@@ -13,9 +13,6 @@ import javax.persistence.Table;
 @Table(name = "user")
 public class UserEntity implements Serializable {
 
-	/**
-	 *
-	 */
 	private static final long serialVersionUID = -4405818278010753016L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

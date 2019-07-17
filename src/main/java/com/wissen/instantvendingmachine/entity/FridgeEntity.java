@@ -36,8 +36,9 @@ public class FridgeEntity implements Serializable {
 		this.fridgeID = fridgeID;
 	}
 
-	/*
-	 * @Override public String toString() { return
-	 * "FridgeEntity["fridgeID=" + fridgeID + "areaCode=" + areaCode ]"; }
-	 */
+	@Override
+	public String toString() {
+		return "FridgeEntity [fridgeID=" + fridgeID + ", AreaCode" + areaCode + "]";
+	}
+
 }
