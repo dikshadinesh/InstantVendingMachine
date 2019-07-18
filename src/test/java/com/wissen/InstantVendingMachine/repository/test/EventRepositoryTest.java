@@ -5,7 +5,7 @@ import java.util.List;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.wissen.InstantVendingMachine.BaseTest;
+import com.wissen.InstantVendingMachine.test.BaseTest;
 import com.wissen.instantvendingmachine.entity.EventEntity;
 import com.wissen.instantvendingmachine.repository.EventRepository;
 

@@ -17,7 +17,7 @@ public class UserEntity implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "User_ID")
-	private int userId;
+	private long userId;
 	@Column(name = "User_Name")
 	private String userName;
 	@Column(name = "Phone_Number")
@@ -27,7 +27,7 @@ public class UserEntity implements Serializable {
 		return phoneNumber;
 	}
 
-	public int getUserId() {
+	public long getUserId() {
 		return userId;
 	}
 
@@ -39,8 +39,8 @@ public class UserEntity implements Serializable {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUserId(long l) {
+		this.userId = l;
 	}
 
 	public void setUserName(String userName) {

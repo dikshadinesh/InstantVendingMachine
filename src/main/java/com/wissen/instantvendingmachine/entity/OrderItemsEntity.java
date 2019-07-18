@@ -13,7 +13,7 @@ import javax.persistence.Table;
 @Table(name = "order_items")
 public class OrderItemsEntity implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -5767354189722562638L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Item_ID")

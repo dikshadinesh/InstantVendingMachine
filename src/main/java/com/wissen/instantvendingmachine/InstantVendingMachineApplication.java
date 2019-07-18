@@ -3,6 +3,8 @@ package com.wissen.instantvendingmachine;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.wissen.instantvendingmachine.service.UserCheck;
+
 @SpringBootApplication
 public class InstantVendingMachineApplication {
 
@@ -10,5 +12,6 @@ public class InstantVendingMachineApplication {
 
 		SpringApplication.run(InstantVendingMachineApplication.class, args);
 
+		UserCheck.userCheck();
 	}
 }

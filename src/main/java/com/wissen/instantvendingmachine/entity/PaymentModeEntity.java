@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
@@ -11,7 +12,8 @@ import javax.persistence.Table;
 
 public class PaymentModeEntity implements Serializable {
 
-	private static final long serialVersionUID = 5182811114402977695L;
+	private static final long serialVersionUID = -4517970221433581538L;
+	@Id
 	@Column(name = "Transaction_ID")
 	private long transactionID;
 	@Column(name = "Card_PayTM_Gpay")

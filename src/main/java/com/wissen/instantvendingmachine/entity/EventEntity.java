@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "events")
+@Table(name = "event")
 public class EventEntity implements Serializable {
 
 	private static final long serialVersionUID = 5197948311587745681L;
@@ -25,6 +25,8 @@ public class EventEntity implements Serializable {
 	private long orderID;
 	@Column(name = "Item_ID")
 	private long itemID;
+	@Column(name = "Fridge_ID")
+	private long fridgeID;
 	@Column(name = "Action")
 	private String action;
 	@Column(name = "Action_On_TRAY")
@@ -54,6 +56,10 @@ public class EventEntity implements Serializable {
 
 	public long getEventID() {
 		return eventID;
+	}
+
+	public long getFridgeID() {
+		return fridgeID;
 	}
 
 	public long getItemID() {
@@ -92,6 +98,10 @@ public class EventEntity implements Serializable {
 		this.eventID = eventID;
 	}
 
+	public void setFridgeID(long fridgeID) {
+		this.fridgeID = fridgeID;
+	}
+
 	public void setItemID(long itemID) {
 		this.itemID = itemID;
 	}
@@ -111,8 +121,9 @@ public class EventEntity implements Serializable {
 	@Override
 	public String toString() {
 		return "EventEntity [eventID=" + eventID + ", userID=" + userID + ", orderID=" + orderID + ", itemID=" + itemID
-				+ ", action=" + action + ", actionOnTray=" + actionOnTray + ", actionOnCompartment="
-				+ actionOnCompartment + ", actionOnFridge=" + actionOnFridge + ", timestamp=" + timestamp + "]";
+				+ ", fridgeID=" + fridgeID + ", action=" + action + ", actionOnTray=" + actionOnTray
+				+ ", actionOnCompartment=" + actionOnCompartment + ", actionOnFridge=" + actionOnFridge + ", timestamp="
+				+ timestamp + "]";
 	}
 
 }

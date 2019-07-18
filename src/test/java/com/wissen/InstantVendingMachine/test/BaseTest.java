@@ -1,4 +1,4 @@
-package com.wissen.InstantVendingMachine;
+package com.wissen.InstantVendingMachine.test;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
