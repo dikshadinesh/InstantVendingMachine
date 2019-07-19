@@ -7,4 +7,6 @@ import com.wissen.instantvendingmachine.entity.UserEntity;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
+
+	UserEntity getOneByPhoneNumber(long phoneNumber);
 }

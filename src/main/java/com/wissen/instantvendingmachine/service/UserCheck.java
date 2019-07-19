@@ -14,7 +14,7 @@ public class UserCheck {
 		if (response.equals("existing")) {
 			lg.getInfo();
 		} else if (response.equals("new")) {
-			rg.newUser();
+			// rg.newUser();
 		}
 	}
 
