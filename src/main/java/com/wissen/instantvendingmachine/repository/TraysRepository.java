@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import com.wissen.instantvendingmachine.entity.TraysEntity;
 
 @Repository
-public interface TraysRepository extends JpaRepository<TraysEntity, Integer> {
+public interface TraysRepository extends JpaRepository<TraysEntity, Long> {
+
+	TraysEntity getOneByItemID(long itemID);
 
 }

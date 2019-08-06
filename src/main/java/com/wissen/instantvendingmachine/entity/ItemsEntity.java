@@ -4,10 +4,16 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "items")
@@ -27,6 +33,12 @@ public class ItemsEntity implements Serializable {
 	private String itemCategory;
 	@Column(name = "Item_Weight")
 	private float itemWeight;
+
+	// lmao who knows
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "Item_ID", referencedColumnName = "Item_ID", insertable = false, updatable = false)
+	@Fetch(FetchMode.JOIN)
+	private TraysEntity traysEntity;
 
 	public String getItemCategory() {
 		return itemCategory;
@@ -48,6 +60,10 @@ public class ItemsEntity implements Serializable {
 		return itemWeight;
 	}
 
+	public TraysEntity getTraysEntity() {
+		return traysEntity;
+	}
+
 	public void setItemCategory(String itemCategory) {
 		this.itemCategory = itemCategory;
 	}
@@ -66,6 +82,10 @@ public class ItemsEntity implements Serializable {
 
 	public void setItemWeight(float itemWeight) {
 		this.itemWeight = itemWeight;
+	}
+
+	public void setTraysEntity(TraysEntity traysEntity) {
+		this.traysEntity = traysEntity;
 	}
 
 	@Override

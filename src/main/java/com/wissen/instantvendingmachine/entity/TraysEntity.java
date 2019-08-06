@@ -13,9 +13,7 @@ import javax.persistence.Table;
 @Table(name = "trays")
 
 public class TraysEntity implements Serializable {
-	/**
-	 *
-	 */
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
