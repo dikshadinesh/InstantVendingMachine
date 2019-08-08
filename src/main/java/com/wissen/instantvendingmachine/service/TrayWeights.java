@@ -1,6 +1,7 @@
 package com.wissen.instantvendingmachine.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,10 +13,12 @@ import org.springframework.stereotype.Service;
 import com.wissen.instantvendingmachine.dto.ItemsBoughtInfoDto;
 import com.wissen.instantvendingmachine.dto.UpdatingTrayWeightsDto;
 import com.wissen.instantvendingmachine.entity.OrderItemsEntity;
+import com.wissen.instantvendingmachine.entity.OrdersEntity;
 import com.wissen.instantvendingmachine.entity.TrayComptEntity;
 import com.wissen.instantvendingmachine.entity.TraysEntity;
 import com.wissen.instantvendingmachine.repository.ItemsRepository;
 import com.wissen.instantvendingmachine.repository.OrderItemsRepository;
+import com.wissen.instantvendingmachine.repository.OrdersRepository;
 import com.wissen.instantvendingmachine.repository.TrayComptRepository;
 import com.wissen.instantvendingmachine.repository.TraysRepository;
 
@@ -31,6 +34,8 @@ public class TrayWeights {
 	private ItemsRepository itemsRepository;
 	@Autowired
 	private OrderItemsRepository orderItemsRepository;
+	@Autowired
+	private OrdersRepository ordersRepository;
 
 	public Map<Long, Float> fetchCurrentTrayWeights() {
 		Map<Long, Float> currentWeights = new HashMap<>();
@@ -44,7 +49,8 @@ public class TrayWeights {
 		return currentWeights;
 	}
 
-	public List<ItemsBoughtInfoDto> getItemPicked(List<UpdatingTrayWeightsDto> updatedWeights) throws Exception {
+	public List<ItemsBoughtInfoDto> getItemPicked(List<UpdatingTrayWeightsDto> updatedWeights, long userID)
+			throws Exception {
 		float oldSum = 0;
 		float newSum = 0;
 		float checkoutAmount = 0;
@@ -52,6 +58,7 @@ public class TrayWeights {
 		Map<Long, Float> currentWeights = fetchCurrentTrayWeights();
 
 		List<ItemsBoughtInfoDto> boughtInfoDtos = new ArrayList<>();
+		List<OrderItemsEntity> orderItemsEntities = new ArrayList<>();
 
 		for (UpdatingTrayWeightsDto updatingTrayWeightsDto : updatedWeights) {
 
@@ -83,7 +90,7 @@ public class TrayWeights {
 			OrderItemsEntity orderItemsEntity = new OrderItemsEntity();
 			orderItemsEntity.setItemId(itemID);
 			orderItemsEntity.setQuantity(numberOfItemsPicked);
-			orderItemsRepository.save(orderItemsEntity);
+			orderItemsEntities.add(orderItemsEntity);
 
 			if (numberOfItemsPicked < 0) {
 				boughtInfoDto.setAction("An item was picked");
@@ -105,6 +112,14 @@ public class TrayWeights {
 		if (oldSum == newSum) {
 			throw new Exception("You might have displaced items, or not picked an item.");
 		}
+
+		OrdersEntity ordersEntity = new OrdersEntity();
+		ordersEntity.setItemPrice(checkoutAmount);
+		ordersEntity.setUserID(userID);
+		ordersEntity.setTimestamp(new Date());
+		OrdersEntity savedOrder = ordersRepository.save(ordersEntity);
+		orderItemsEntities.forEach(x -> x.setOrderID(savedOrder.getOrderID()));
+		orderItemsRepository.saveAll(orderItemsEntities);
 		return boughtInfoDtos;
 	}
 }

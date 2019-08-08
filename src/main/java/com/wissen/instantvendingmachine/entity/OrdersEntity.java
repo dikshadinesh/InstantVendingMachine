@@ -1,7 +1,7 @@
 package com.wissen.instantvendingmachine.entity;
 
 import java.io.Serializable;
-import java.security.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,7 +25,7 @@ public class OrdersEntity implements Serializable {
 	@Column(name = "Total_Price")
 	private float itemPrice;
 	@Column(name = "Time_stamp")
-	private Timestamp timestamp;
+	private Date timestamp;
 
 	public float getItemPrice() {
 		return itemPrice;
@@ -35,7 +35,7 @@ public class OrdersEntity implements Serializable {
 		return orderID;
 	}
 
-	public Timestamp getTimestamp() {
+	public Date getTimestamp() {
 		return timestamp;
 	}
 
@@ -51,7 +51,7 @@ public class OrdersEntity implements Serializable {
 		this.orderID = orderID;
 	}
 
-	public void setTimestamp(Timestamp timestamp) {
+	public void setTimestamp(Date timestamp) {
 		this.timestamp = timestamp;
 	}
 
