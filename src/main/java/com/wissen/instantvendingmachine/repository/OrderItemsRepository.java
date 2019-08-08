@@ -6,6 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.wissen.instantvendingmachine.entity.OrderItemsEntity;
 
 @Repository
-public interface OrderItemsRepository extends JpaRepository<OrderItemsEntity, Integer> {
-
+public interface OrderItemsRepository extends JpaRepository<OrderItemsEntity, Long> {
 }

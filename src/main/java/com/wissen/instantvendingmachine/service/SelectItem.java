@@ -15,12 +15,6 @@ public class SelectItem {
 	@Autowired
 	private CompartmentName compartmentName;
 
-	public void decrementQuantity(long itemID) {
-		TraysEntity trays = traysRepository.getOneByItemID(itemID);
-		trays.setQuantity(trays.getQuantity() - 1);
-		traysRepository.save(trays);
-	}
-
 	public String getCompartmentName(long itemID) {
 		TraysEntity trays = traysRepository.getOneByItemID(itemID);
 		long trayID = trays.getTrayID();

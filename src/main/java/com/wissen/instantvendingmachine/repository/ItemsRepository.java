@@ -14,4 +14,6 @@ public interface ItemsRepository extends JpaRepository<ItemsEntity, Long> {
 
 	@Query("SELECT i.itemID, i.itemName, i.itemPrice, i.itemCategory, t.quantity FROM ItemsEntity i INNER JOIN i.traysEntity as t WHERE i.itemID = t.itemID")
 	List<ItemsTraysCombined> fetchItemsTraysDataInnerJoin();
+
+	ItemsEntity getOneByItemID(long itemID);
 }

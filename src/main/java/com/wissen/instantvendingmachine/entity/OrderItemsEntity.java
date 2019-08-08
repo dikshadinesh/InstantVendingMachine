@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -15,22 +13,40 @@ public class OrderItemsEntity implements Serializable {
 
 	private static final long serialVersionUID = -5767354189722562638L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "Item_ID")
-	private long itemId;
+	private long itemID;
 	@Column(name = "Quantity")
 	private int quantity;
 
+	@Column(name = "Order_ID")
+	private long orderID;
+
 	public long getItemId() {
-		return itemId;
+		return itemID;
+	}
+
+	public long getItemID() {
+		return itemID;
+	}
+
+	public long getOrderID() {
+		return orderID;
 	}
 
 	public int getQuantity() {
 		return quantity;
 	}
 
-	public void setItemId(long itemId) {
-		this.itemId = itemId;
+	public void setItemId(long itemID) {
+		this.itemID = itemID;
+	}
+
+	public void setItemID(long itemID) {
+		this.itemID = itemID;
+	}
+
+	public void setOrderID(long orderID) {
+		this.orderID = orderID;
 	}
 
 	public void setQuantity(int quantity) {
@@ -39,7 +55,7 @@ public class OrderItemsEntity implements Serializable {
 
 	@Override
 	public String toString() {
-		return "OrderItemsEntity [itemId=" + itemId + ", quantity=" + quantity + "]";
+		return "OrderItemsEntity [itemID=" + itemID + ", quantity=" + quantity + ", orderID=" + orderID + "]";
 	}
 
 }

@@ -27,7 +27,7 @@ public class TrayWeightsController {
 
 	@PostMapping("/pick_items")
 	public ResponseEntity<List<ItemsBoughtInfoDto>> gettingItemsPicked(
-			@RequestBody List<UpdatingTrayWeightsDto> updatedWeights) {
+			@RequestBody List<UpdatingTrayWeightsDto> updatedWeights) throws Exception {
 		return new ResponseEntity<>(trayWeights.getItemPicked(updatedWeights), HttpStatus.OK);
 	}
 
